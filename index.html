@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<!--
+    3 sections
+    1. A section where you can add new stock.
+    2. A section where you can remove stock.
+    3. A section where the current stock levels and average prices of stock are displayed.
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Stock Management: Home</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/style.css">
+        <!-- Font Awesome -->
+        <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        rel="stylesheet"
+        />
+        <!-- Google Fonts -->
+        <link
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+        rel="stylesheet"
+        />
+        <!-- MDB -->
+        <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css"
+        rel="stylesheet"
+        />
+        <style>
+            #myForm {
+                display: none;
+            }
+            #myForm2 {
+                display: none;
+            }
+        </style>
+    </head>
+    
+  
+<body>
+  <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block" style="z-index: 2000;">
+    <div class="container-fluid">
+      <!-- Navbar brand -->
+        <span>STOCK MANAGEMENT</span>
+      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
+        aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarExample01">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item active">
+          </li>
+          <li class="nav-item">
+          </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+  <!-- Navbar -->
+        <!--Main layout-->
+        <main style="margin-top: 58px">
+            <div class="container pt-4">
+        
+                <!--Section: Sales Performance KPIs-->
+                <section class="mb-4">
+                    <div class="card">
+                        <div class="card-header text-center py-3">
+                            <div id="myForm" >
+                                <div class="card-header text-center py-3">
+                                    <h4 class="mb-0 text-center">
+                                      <strong>Add Stock</strong>
+                                    </h4>
+                                  </div>
+                                <form id="form" onsubmit="return false;" >
+                                    <div class="row">
+                                      <div class="col-md-5 mx-auto my-4">
+                                        <div class="card card-signup z-depth-0">
+                                          <div class="card-body text-center">
+                                            
+                        
+                                            <div class="md-form mat-2">
+                                              <input type="number" id="productQuantity" class="form-control">
+                                              <label for="amount">Item Amount</label>
+                                              </div>
+                                              
+                                            <div class="md-form mat-2">
+                                              <input type="number" id="productPrice" class="form-control" required>
+                                              <label for="price">Price Per Unit</label>
+                                              </div>
+                                            
+                                            
+                                            <div class="card-foter text-right">
+                                                <button onclick="saveAddForm()" type="submit" class="btn btn-outline-primary" style="width: 140px;">Recieve</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div id="myForm2">
+                                <div class="card-header text-center py-3">
+                                    <h4 class="mb-0 text-center">
+                                      <strong>Sell Stock</strong>
+                                    </h4>
+                                  </div>
+                                <form id="form2" onsubmit="return false;">
+                                    <div class="row">
+                                      <div class="col-md-5 mx-auto my-4">
+                                        <div class="card card-signup z-depth-0">
+                                          <div class="card-body text-center">
+                                            
+                        
+                                            <div class="md-form mat-2">
+                                              <input type="email" id="productEmail" class="form-control">
+                                              <label for="email">Buyer Email</label>
+                                            </div>
+
+                                            <div class="md-form mat-2">
+                                                <input type="number" id="productQuantity2" class="form-control">
+                                                <label for="amount">Item Amount</label>
+                                            </div>
+                                              
+                                            <div class="md-form mat-2">
+                                              <input type="number" id="productPrice2" class="form-control">
+                                              <label for="price">Price Per Unit</label>
+                                            </div>
+                                            
+                                            
+                                            <div class="card-foter text-right">
+                                                <button onclick="saveSellForm()" type="submit" class="btn btn-outline-primary" style="width: 140px;">Sell</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="card-body" >
+                                <div class="table-responsive">
+                                    
+                                <table class="table table-hover text-nowrap">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Product Detail</th>
+                                        <th scope="col">Avg. Price </a></th>
+                                        <th scope="col"  style="text-align:center">Quantity</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td id='name1'></td>
+                                        <td>
+                                            R <span id='price1'></span>
+                                        </td>
+                                        <td style="text-align:center">
+                                            <i class="fas fa-plus-circle p-3 text-success" onclick="add(); sellNo(); updateProduct(0)"></i>
+                                            <span id='quantity1'></span>
+                                            <i class="fas fa-minus-circle p-3 text-danger" onclick="sell(); addNo(); updateProduct(0)"></i>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td id='name2'></td>
+                                        <td>
+                                            R <span id='price2'></span>
+
+                                        </td>
+                                        <td style="text-align:center">
+                                            <i class="fas fa-plus-circle p-3 text-success"  onclick="add(); sellNo(); updateProduct(1)"></i>
+                                            <span id='quantity2'></span>
+                                            <i class="fas fa-minus-circle p-3 text-danger" onclick="sell(); addNo(); updateProduct(1)"></i>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td id='name3'></td>
+                                        <td>
+                                            R <span id='price3'></span>
+
+                                        </td>
+                                        <td style="text-align:center">
+                                            <i class="fas fa-plus-circle p-3 text-success"  onclick="add(); sellNo(); updateProduct(2)"></i>
+                                            <span id='quantity3'></span>
+                                            <i class="fas fa-minus-circle p-3 text-danger" onclick="sell(); addNo();; updateProduct(2)"></i>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+        <!--Main layout-->
+        <!--Scripts-->
+        <script src="js/script.js" async defer></script>
+</body>
+</html>
